@@ -8,8 +8,8 @@ export default class Render {
     const string = this.cards
       .map(
         card =>
-          `<a href="${card.largeImageURL}">
-            <div class="photo-card">            
+          `<a href="${card.largeImageURL} ">
+            <div class="photo-card">
               <img src="${card.webformatURL}" alt="${card.tags}" loading="lazy" />
               <div class="info">
                 <p class="info-item">

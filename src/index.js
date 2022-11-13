@@ -14,6 +14,12 @@ render.tag = document.querySelector('.gallery');
 const buttonMore = document.querySelector('.load-more');
 buttonMore.addEventListener('click', getMorePhoto);
 
+// simplelightbox____________________________
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+});
+// __________________________________________
+
 async function processing(event) {
   event.preventDefault();
 
@@ -40,15 +46,14 @@ async function processing(event) {
 
   if (totalHits <= 40) {
     Notify.info('We`re sorry, but you`ve reached the end of search results.');
-    render.renderCards();
-    return;
-  }
+      }
 
   // ФОРМУЛА НЕВЕРНАЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   if (totalHits > 40) {
-    render.renderCards();
     buttonMore.classList.remove('is-hidden');
   }
+  render.renderCards();
+  lightbox.refresh();
 }
 
 async function getMorePhoto(event) {
@@ -59,15 +64,11 @@ async function getMorePhoto(event) {
   render.arrCards = hits;
   render.renderCards();
   
+  
   if (Math.ceil(totalHits / 40) <= request.page-1) {
     Notify.info('We`re sorry, but you`ve reached the end of search results.');
-    render.renderCards();
     buttonMore.classList.add('is-hidden');
   }
+  
 }
 
-var lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionDelay: 250,
-  navText,
-});
