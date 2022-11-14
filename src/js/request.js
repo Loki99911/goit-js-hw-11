@@ -13,10 +13,7 @@ export default class Request {
     this.page += 1;
     return response;
   }
-  // Вроде Инкремент лишний!!!!!!!!!!!!
-  async incrementPage() {
-    this.page += 1;
-  }
+ 
   async resetPage() {
     this.page = 1;
   }

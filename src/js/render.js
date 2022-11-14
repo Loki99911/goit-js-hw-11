@@ -48,6 +48,7 @@ export default class Render {
   set tag(newPlace) {
     this.place = newPlace;
   }
+
   get arrCards() {
     return this.cards;
   }
@@ -55,4 +56,12 @@ export default class Render {
   set arrCards(newCards) {
     this.cards = newCards;
   }
+// // _______________________________________
+//   tag(newPlace) {
+//     if (!newPlace) {
+//       return this.place;
+//     }
+//     this.place = newPlace;
+//   }
 }
+

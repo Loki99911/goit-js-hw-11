@@ -5,6 +5,7 @@ import SmoothScrolling from './js/smooth-scrolling'
 import { Notify } from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+// import InfiniteScroll from 'infinite-scroll';
 
 const form = document.querySelector('#search-form');
 form.addEventListener('submit', processing);
@@ -43,7 +44,6 @@ async function processing(event) {
     Notify.info('We`re sorry, but you`ve reached the end of search results.');
       }
 
-  // ФОРМУЛА НЕВЕРНАЯ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   if (totalHits > 40) {
     buttonMore.classList.remove('is-hidden');
   }
@@ -72,6 +72,20 @@ async function getMorePhoto(event) {
 // simplelightbox____________________________
 const lightbox = new SimpleLightbox('.gallery a', {
   captionDelay: 250,
+  scrollZoom: false,
 });
 // __________________________________________
 
+// let infScroll = new InfiniteScroll(render.tag, {
+//    responseType: 'text',
+//   history: false,
+//   path() {
+//     return `https://pixabay.com/api/?key=31271755-a238d7bfd5266bfb37ac3595c&q=${request.name}&image_type=photo&orientation=horizontal&safesearch=true&page=2&per_page=40`;
+//   },
+// });
+
+// infScroll.loadNextPage();
+
+// infScroll.on('load', (response, path) => {
+//   console.log(JSON.parse(response));
+// });
