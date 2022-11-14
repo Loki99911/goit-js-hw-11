@@ -36,10 +36,6 @@ async function processing(event) {
     Notify.success(`Hooray! We found ${totalHits} images.`);
   }
 
-  if (totalHits <= 40) {
-    Notify.info('We`re sorry, but you`ve reached the end of search results.');
-      }
-
   render.renderCards();
   lightbox.refresh();
   
