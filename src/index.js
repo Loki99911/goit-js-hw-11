@@ -1,6 +1,7 @@
 import './css/styles.css';
 import Request from './js/request';
 import Render from './js/render';
+import SmoothScrolling from './js/smooth-scrolling'
 import { Notify } from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -13,12 +14,6 @@ const render = new Render();
 render.tag = document.querySelector('.gallery');
 const buttonMore = document.querySelector('.load-more');
 buttonMore.addEventListener('click', getMorePhoto);
-
-// simplelightbox____________________________
-const lightbox = new SimpleLightbox('.gallery a', {
-  captionDelay: 250,
-});
-// __________________________________________
 
 async function processing(event) {
   event.preventDefault();
@@ -63,6 +58,8 @@ async function getMorePhoto(event) {
   // передача в отрисовку
   render.arrCards = hits;
   render.renderCards();
+  lightbox.refresh();
+  SmoothScrolling();
   
   
   if (Math.ceil(totalHits / 40) <= request.page-1) {
@@ -71,4 +68,10 @@ async function getMorePhoto(event) {
   }
   
 }
+
+// simplelightbox____________________________
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+});
+// __________________________________________
 
